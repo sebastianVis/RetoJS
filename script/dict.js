@@ -21,7 +21,7 @@ let letrasNat = {
 'p' : '.--.', 'q' : '--.-', 'r' : '.-.',
 's' : '...', 't' : '-', 'u' : '..-',
 'v' : '...-', 'w' : '.--', 'x' : '-..-',
-'y' : '-.--', 'z' : '--..', ' ' : '/',
+'y' : '-.--', 'z' : '--..', '' : '/',
 
 '1': '.----', '2': '..---', '3': '...--',
 '4': '....-', '5': '.....',
@@ -37,6 +37,7 @@ let textoCompleto = 'Traduccion: ';
 let init = true;
 let text = false;
 let morseText = false;
+let textoCompletoNat = 'Traduccion: '
 
 while (init == true){
     let menu = prompt(`Ingrese menu: 1. Morse a natural 2. Texto a morse 3. Salir`);
@@ -64,13 +65,13 @@ while (init == true){
     else if (menu == '2'){
         morseText = true;
         while (morseText = true){
-            let textoEnMorse = prompt(`ingrese letra para pasar a codigo morse, deje vacio para terminar`);
-            if (textoEnMorse == ''){
+            let textoEnMorse = prompt(`ingrese letra para pasar a codigo morse, escriba fin para terminar`);
+            if (textoEnMorse == 'fin'){
                 morseText = false;
             }
             for (let palabra in letrasNat){
                 if (palabra === textoEnMorse){
-                    textoCompleto = (textoCompleto + `${letrasNat[palabra]}`); 
+                    textoCompletoNat = (textoCompletoNat + `${letrasNat[palabra]}`); 
                     console.log(`${palabra} : ${letrasNat[palabra]}`);
                     break;
                 }
@@ -80,6 +81,7 @@ while (init == true){
                 }
             }
         }
+        console.log(textoCompletoNat);
     }
     else if (menu == '3'){
         init = false; 
